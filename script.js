@@ -3,32 +3,7 @@ const generateId = () => {
   const randomPart = Math.random();
    return `${timestamp}${randomPart}`;
 };
-const users_stubs = [{
-  id: generateId(),
-  date: new Date().toLocaleString("ru-RU", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  }),
-  fio: "Двойняков Егор Сергеевич",
-  manager: "123",
-  phone: "8987545263",
-  age: "18",
-  place: "Московская",
-  trailerLength: "10",
-  experience: "2",
-  method: "",
-  source: "Знакомые",
-  referrer: "",
-  sbResult: "",
-  columnManager: "",
-  medicalCheck: "",
-  comment: "",
-  status: "Доставлено",
-  message: "",
-},
+const users_stubs = [
 {
   id: generateId(),
   date: new Date().toLocaleString("ru-RU", {
@@ -51,9 +26,9 @@ const users_stubs = [{
   sbResult: "",
   columnManager: "Начальник 1",
   medicalCheck: "",
-  comment: "",
+  comment: "comment",
   status: "Доставлено",
-  message: "",
+  message: "message",
 },
 {
   id: generateId(),
@@ -77,62 +52,11 @@ const users_stubs = [{
   sbResult: "",
   columnManager: "Начальник 2",
   medicalCheck: "",
-  comment: "",
+  comment: "comment",
   status: "Доставлено",
-  message: "",
+  message: "message",
 },
-{
-  id: generateId(),
-  date: new Date().toLocaleString("ru-RU", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  }),
-  fio: "Сидоров Максим Александрович",
-  manager: "789",
-  phone: "0987654321",
-  age: "41",
-  place: "Самарская",
-  trailerLength: "20",
-  experience: "более 5",
-  method: "Telegram",
-  source: "Интернет",
-  referrer: "",
-  sbResult: "",
-  columnManager: "Начальник 1",
-  medicalCheck: "",
-  comment: "",
-  status: "Доставлено",
-  message: "",
-},
-{
-  id: generateId(),
-  date: new Date().toLocaleString("ru-RU", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  }),
-  fio: "Смирнова Екатерина Дмитриевна",
-  manager: "135",
-  phone: "5678901234",
-  age: "27",
-  place: "Свердловская",
-  trailerLength: "10",
-  experience: "до 1",
-  method: "Viber",
-  source: "Знакомые",
-  referrer: "",
-  sbResult: "",
-  columnManager: "Начальник 2",
-  medicalCheck: "",
-  comment: "",
-  status: "Доставлено",
-  message: "",
-},]
+]
 const from_stubs = [
   "Московская",
   "Ленинградская",
@@ -399,14 +323,23 @@ const resetForm = () => {
 
 const loadData = () => {
   const toFilter = document.getElementById("to-filter");
-  const existingNames = new Set(
-    Array.from(toFilter.children).map((el) => el.textContent)
-  );
+  const existingNames = users.map((user) => user.fio);
 
-  const uniqueUsers = users.filter((user) => !existingNames.has(user.fio));
+  
+  for (let i = toFilter.options.length - 1; i >= 0; i--) {
+    toFilter.remove(i);
+  }
+
+
+  const uniqueUsers = users.filter((user) => !existingNames.includes(user.fio));
   uniqueUsers.sort();
+
+  toFilter.add(new Option('Все', 'Все'));
   uniqueUsers.forEach((user) => {
     toFilter.add(new Option(user.fio, user.fio));
+  });
+  existingNames.forEach((name) => {
+    toFilter.add(new Option(name, name));
   });
 };
 
