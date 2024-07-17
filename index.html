@@ -10,16 +10,14 @@
 
 <body>
     <div class="container-fluid mt-2">
-        <h2 class="mb-4 text-center">Набор персонала</h2>
+        <h1 class="mb-4 mt-5  text-center">Набор персонала</h1>
 
-        <!-- Форма фильтрации -->
+        <!--  фильтр -->
         <form class="form-inline mb-4">
-            <div class="form-group mx-2">
+            <div class="form-group mx-2 ">
                 <label for="from" class="mr-2">Откуда:</label>
                 <select class="form-control" id="from-filter">
                     <option>Все</option>
-                    <option>Московская</option>
-                    <option>Ленинградская</option>
                 </select>
             </div>
             <div class="form-group mx-2">
@@ -36,14 +34,14 @@
                     <option>Не доставлено</option>
                 </select>
             </div>
-            <button type="button" class="btn btn-dark mx-2" id="filter-button">Найти</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEntryModal">Создать</button>
+            <button type="button" class="btn btn-dark mx-2 w-25" id="filter-button">Найти</button>
         </form>
+        <button type="button" class="btn btn-dark mb-4 w-25" data-toggle="modal" data-target="#addEntryModal">Создать</button>
 
-        <!-- Таблица звонков -->
+        <!-- Таблица  -->
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
-                <thead class="thead-dark">
+                <thead class="thead">
                     <tr>
                         <th>Дата</th>
                         <th>Откуда</th>
@@ -57,12 +55,11 @@
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                    <!-- Пример строки таблицы -->
                 </tbody>
             </table>
         </div>
 
-        <!-- Модальное окно для добавления записи -->
+        <!-- Модальное окно -->
         <div class="modal fade" id="addEntryModal" tabindex="-1" role="dialog" aria-labelledby="addEntryModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -82,8 +79,7 @@
                             <div class="form-group">
                                 <label for="manager">Менеджер</label>
                                 <select class="form-control" id="manager">
-                                    <option>Менеджер 1</option>
-                                    <option>Менеджер 2</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -95,41 +91,36 @@
                             </div>
                             <div class="form-group">
                                 <label for="age">Возраст</label>
-                                <input type="number" class="form-control" id="age" required>
+                                <input type="number" class="form-control" id="age" min="16" required>
                             </div>
                             <div class="form-group">
                                 <label for="place">Область/край</label>
                                 <select class="form-control" id="place">
-                                    <option>Московская</option>
-                                    <option>Ленинградская</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="trailer_length">Длина прицепа</label>
                                 <select class="form-control" id="trailer_length">
-                                    <option>10 м</option>
-                                    <option>20 м</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="experience">Стаж на фурах (в годах)</label>
                                 <select class="form-control" id="experience">
-                                    <option>1</option>
-                                    <option>2</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="method">Метод отправки</label>
                                 <select class="form-control" id="method">
-                                    <option>WhatsApp</option>
-                                    <option>SMS</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="source">Источник</label>
                                 <select class="form-control" id="source">
-                                    <option>Интернет</option>
-                                    <option>Знакомые</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -143,8 +134,7 @@
                             <div class="form-group">
                                 <label for="column_manager">Начальник колонны</label>
                                 <select class="form-control" id="column_manager">
-                                    <option>Начальник 1</option>
-                                    <option>Начальник 2</option>
+       
                                 </select>
                             </div>
                             <div class="form-group">
