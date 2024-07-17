@@ -37,7 +37,10 @@ const requiredFields = [
   "message",
 ];
 
-const saveEntry = () => {
+
+
+const saveEntry = e => {
+  e.preventDefault();
   const fio = document.getElementById("fio").value;
   const manager = document.getElementById("manager").value;
   const phone = document.getElementById("phone").value;
@@ -90,14 +93,23 @@ const saveEntry = () => {
 };
 
 const validateForm = () => {
+let value = true
   for (const fieldId of requiredFields) {
+    document.getElementById(fieldId).classList.remove("is-invalid")
     if (!document.getElementById(fieldId)?.value) {
-      //showCustomAlert("Пожалуйста, заполните все обязательные поля!");
-      return false;
+      document.getElementById(fieldId).classList.add("is-invalid")
+      value = false;
     }
   }
-  return true;
+  return value;
 };
+
+requiredFields.forEach((fieldId) => {
+  document.getElementById(fieldId).addEventListener("focus", () => {
+    document.getElementById(fieldId).classList.remove("is-invalid");
+  });
+});
+
 /*
 const showCustomAlert = (message) => {
   const alertContainer = document.createElement("div");
